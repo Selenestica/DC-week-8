@@ -1,0 +1,35 @@
+
+<html>
+<head></head>
+
+<body>
+
+    <h1>Add New Post</h1>
+
+    <form method="POST" action = "/posts">
+        <input type="text" name="title" />
+        <input type="text" name="body" />
+        <button>Save</button>
+    </form>
+
+    <h1>Posts</h1>
+
+    {{#posts}}
+
+        <b>{{title}}</b>
+
+        <p>{{body}}</p>
+          <form method="POST" action="./delete/{{post_id}}">
+            <button>Delete</button>
+          </form>
+          <form method="POST" action = "./update/{{post_id}}">
+            <input type="text" name="titleUpdated" placeholder="updated title" />
+            <input type="text" name="bodyUpdated" placeholder="updated body" />
+            <button>Update</button>
+          </form>
+
+    {{/posts}}
+
+</body>
+
+</html>
