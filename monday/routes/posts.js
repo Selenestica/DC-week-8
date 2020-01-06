@@ -46,4 +46,12 @@ router.get('/category/:category', (req, res) => {
     }).then(posts => res.json(posts))
 })
 
+router.get('/isPublished/:published', (req, res) => {
+    models.Post.findAll({
+        where: {
+            isPublished: req.params.published
+        }
+    }).then(posts => res.json(posts))
+})
+
 module.exports = router
