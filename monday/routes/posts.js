@@ -54,4 +54,16 @@ router.get('/isPublished/:published', (req, res) => {
     }).then(posts => res.json(posts))
 })
 
+router.get('/comments/:commentID', (req, res) => {
+    const commentID = req.params.commentID
+    models.Comment.findByPk(commentID, {
+        include: [
+            {
+                model: models.Post,
+                as: 'post'
+            }
+        ]
+    }).then(comment => res.json(comment))
+})
+
 module.exports = router
